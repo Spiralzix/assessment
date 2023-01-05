@@ -2,7 +2,10 @@ module github.com/Spiralzix/assessment
 
 go 1.19
 
-require github.com/ilyakaznacheev/cleanenv v1.4.2
+require (
+	github.com/ilyakaznacheev/cleanenv v1.4.2
+	github.com/lib/pq v1.10.7
+)
 
 require (
 	github.com/BurntSushi/toml v1.1.0 // indirect
