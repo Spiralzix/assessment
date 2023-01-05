@@ -5,6 +5,8 @@ import (
 	"log"
 
 	"github.com/Spiralzix/assessment/config"
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	_ "github.com/lib/pq"
 )
 
@@ -26,4 +28,10 @@ func main() {
 	if err != nil {
 		log.Fatal("can't create table", err)
 	}
+
+	/// Initiate server using Echo
+	e := echo.New()
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+	log.Fatal(e.Start(cfg.Port))
 }
