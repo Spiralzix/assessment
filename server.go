@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/Spiralzix/assessment/config"
+	"github.com/Spiralzix/assessment/handler"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	_ "github.com/lib/pq"
@@ -31,7 +32,11 @@ func main() {
 
 	/// Initiate server using Echo
 	e := echo.New()
+	h := handler.NewApplication(db)
+
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.POST("/expenses", h.CreateExpenseHandler)
+
 	log.Fatal(e.Start(cfg.Port))
 }
