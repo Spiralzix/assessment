@@ -37,6 +37,7 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.POST("/expenses", h.CreateExpenseHandler)
+	e.GET("/expenses/:id", h.QueryExpenseHandler)
 
 	log.Fatal(e.Start(cfg.Port))
 }
