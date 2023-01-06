@@ -10,14 +10,7 @@ import (
 type (
 	// Config -.
 	Config struct {
-		App
 		PostgreSQL
-	}
-
-	// App -.
-	App struct {
-		Name    string `env-required:"true" env:"APP_NAME"`
-		Version string `env-required:"true" env:"APP_VERSION"`
 	}
 
 	//PostgreSQL
