@@ -39,6 +39,7 @@ func main() {
 	e.POST("/expenses", h.CreateExpenseHandler)
 	e.GET("/expenses/:id", h.QueryExpenseHandler)
 	e.GET("/expenses", h.QueryAllExpenseHandler)
+	e.PUT("/expenses/:id", h.UpdateExpenseHandler)
 
 	log.Fatal(e.Start(cfg.Port))
 }
