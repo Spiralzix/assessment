@@ -23,7 +23,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	createTb := `CREATE TABLE IF NOT EXISTS expenses (id SERIAL PRIMARY KEY, Title TEXT, amount INT, note TEXT, tags TEXT[]);`
+	createTb := `CREATE TABLE IF NOT EXISTS expenses (id SERIAL PRIMARY KEY, title TEXT, amount INT, note TEXT, tags TEXT[]);`
 	_, err = db.Exec(createTb)
 
 	if err != nil {
