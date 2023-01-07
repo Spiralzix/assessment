@@ -40,6 +40,12 @@ func main() {
 	e := echo.New()
 	h := handler.NewApplication(db)
 
+	e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
+		if username == "November 10" || password == "2009" {
+			return true, nil
+		}
+		return false, nil
+	}))
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.POST("/expenses", h.CreateExpenseHandler)
@@ -47,6 +53,7 @@ func main() {
 	e.GET("/expenses", h.QueryAllExpenseHandler)
 	e.PUT("/expenses/:id", h.UpdateExpenseHandler)
 
+	/// Graceful shutdown
 	go func() {
 		if err := e.Start(cfg.Port); err != nil && err != http.ErrServerClosed {
 			e.Logger.Fatal("shutting down the server")
