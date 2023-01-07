@@ -1,23 +1,21 @@
-FROM golang:1.19-alpine as build-base
+FROM golang:1.19-alpine as builder
 
 WORKDIR /app
 
-COPY go.mod .
-
-RUN go mod download
-
 COPY . .
 
-RUN CGO_ENABLED=0 go test --tags=unit -v ./...
+RUN go mod tidy
 
-RUN go build -o ./out/go-app .
+CMD CGO_ENABLED=0 go test --tags=unit -v ./...
 
-FROM alpine:3.16.2
+RUN go build -o expenses-tracking .
+
+FROM alpine:3.16.3
 
 EXPOSE 2565
 
 WORKDIR /app
 
-COPY --from=build-base /app/out/go-app /app/go-app
+COPY --from=builder /app/expenses-tracking /app
 
-CMD ["/app/go-app"]
+CMD [ "/app/expenses-tracking" ]
