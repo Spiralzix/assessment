@@ -40,12 +40,6 @@ func main() {
 	e := echo.New()
 	h := handler.NewApplication(db)
 
-	e.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
-		if username == "November 10" || password == "2009" {
-			return true, nil
-		}
-		return false, nil
-	}))
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.POST("/expenses", h.CreateExpenseHandler)
