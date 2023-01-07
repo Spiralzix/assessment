@@ -12,6 +12,7 @@ import (
 
 	"github.com/Spiralzix/assessment/config"
 	"github.com/Spiralzix/assessment/handler"
+	middlewareAuth "github.com/Spiralzix/assessment/middleware"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	_ "github.com/lib/pq"
@@ -42,6 +43,7 @@ func main() {
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.Use(middlewareAuth.Authorization)
 	e.POST("/expenses", h.CreateExpenseHandler)
 	e.GET("/expenses/:id", h.QueryExpenseHandler)
 	e.GET("/expenses", h.QueryAllExpenseHandler)
