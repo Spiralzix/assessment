@@ -26,7 +26,6 @@ func TestGetExpenseHandler(t *testing.T) {
 
 		// Arrange
 		e := echo.New()
-		// var id int = 1
 		req := httptest.NewRequest(http.MethodGet, "/expense/1", strings.NewReader(""))
 		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 		rec := httptest.NewRecorder()

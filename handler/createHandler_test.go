@@ -19,7 +19,7 @@ func TestCreateExpenseHandler(t *testing.T) {
 
 	t.Run("Success-condition, 201Created", func(t *testing.T) {
 		//Data preparation
-		jsonPayload := `{"title":"NMD ADIDAS","amount":5600,"note":"Student discount","tags":["shoes","adidas"]}`
+		jsonPayload := `{"title":"NMD ADIDAS","amount":5600.00,"note":"Student discount","tags":["shoes","adidas"]}`
 		expected := `{"id":1,"title":"NMD ADIDAS","amount":5600,"note":"Student discount","tags":["shoes","adidas"]}`
 
 		// Arrange
@@ -29,7 +29,7 @@ func TestCreateExpenseHandler(t *testing.T) {
 		rec := httptest.NewRecorder()
 		db, mock, err := sqlmock.New()
 		mockRows := sqlmock.NewRows([]string{"id"}).AddRow(1)
-		mock.ExpectQuery(("INSERT INTO expenses")).WithArgs("NMD ADIDAS", 5600, "Student discount", pq.Array([]string{"shoes", "adidas"})).WillReturnRows(mockRows)
+		mock.ExpectQuery(("INSERT INTO expenses")).WithArgs("NMD ADIDAS", 5600.00, "Student discount", pq.Array([]string{"shoes", "adidas"})).WillReturnRows(mockRows)
 		if err != nil {
 			t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
 		}
