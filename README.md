@@ -21,7 +21,7 @@
 
 ## How to build a docker image
 
-- docker build -t assessment .
+- docker build -t expenses-tracking .
 
 ## How to run a docker image
 
@@ -29,4 +29,4 @@
   -e PORT=:2565 \
   -e DATABASE_URL=postgres://mjjvhixr:ZkGSsm9jMBIY3x37X8A_hFUBPTIlgw-g@john.db.elephantsql.com/mjjvhixr \
   -p 2565:2565 \
-  assessment
+  expenses-tracking
