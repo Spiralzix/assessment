@@ -21,7 +21,7 @@
 
 ## How to build a docker image
 
-- docker build -t assessment
+- docker build -t assessment .
 
 ## How to run a docker image
 
