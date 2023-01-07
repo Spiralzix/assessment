@@ -2,11 +2,10 @@
 
 - This is an Expense tracking system using Golang with REST API
 - This tracking system accepts only 4 operations which are
-
-* Create
-* Query a single row
-* Query all rows
-* Update a specific row
+  - Create
+  - Query a single row
+  - Query all rows
+  - Update a specific row
 
 ## How to start an application
 
@@ -26,7 +25,7 @@
 
 ## How to run a docker image
 
-- docker run \  
+- docker run \
   -e PORT=:2565 \
   -e DATABASE_URL=postgres://mjjvhixr:ZkGSsm9jMBIY3x37X8A_hFUBPTIlgw-g@john.db.elephantsql.com/mjjvhixr \
   -p 2565:2565 \
