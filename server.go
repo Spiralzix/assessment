@@ -39,6 +39,7 @@ func main() {
 
 	/// Initiate server using Echo
 	e := echo.New()
+	port := os.Getenv("PORT")
 	h := handler.NewApplication(db)
 
 	e.Use(middleware.Logger())
@@ -51,7 +52,7 @@ func main() {
 
 	/// Graceful shutdown
 	go func() {
-		if err := e.Start(cfg.Port); err != nil && err != http.ErrServerClosed {
+		if err := e.Start(port); err != nil && err != http.ErrServerClosed {
 			e.Logger.Fatal("shutting down the server")
 		}
 	}()
