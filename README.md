@@ -26,7 +26,7 @@
 ## How to run a docker image
 
 - docker run \
-  -e PORT=2565 \
+  -e PORT=:2565 \
   -e DATABASE_URL=postgres://mjjvhixr:ZkGSsm9jMBIY3x37X8A_hFUBPTIlgw-g@john.db.elephantsql.com/mjjvhixr \
   -p 2565:2565 \
   expenses-tracking
